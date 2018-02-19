@@ -3,11 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Lesson;
+use App\Transformer\LessonTransformer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
 class LessonsController extends Controller
 {
+
+    protected $lessonTransformer;
+
+    public function __construct(LessonTransformer $lessonTransformer)
+    {
+        $this->lessonTransformer = $lessonTransformer;
+    }
 
     public function index()
     {
@@ -20,7 +28,7 @@ class LessonsController extends Controller
         return Response::json([
             'code' => 200,
             'message' => 'success',
-            'data' => $this->transformCollection($lessons)
+            'data' => $this->lessonTransformer->transformCollection($lessons->toArray())
         ]);
 
     }
@@ -54,7 +62,7 @@ class LessonsController extends Controller
         return Response::json([
             'code' => 200,
             'message' => 'success',
-            'data' => $this->transform($lesson)
+            'data' => $this->lessonTransformer->transform($lesson)
         ]);
     }
 
@@ -90,31 +98,5 @@ class LessonsController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    /**
-     * API字段映射，处理Collection数据
-     * @param $lessons
-     * @return array
-     */
-    private function transformCollection($lessons)
-    {
-        return array_map([$this, 'transform'], $lessons->toArray());
-    }
-
-    /**
-     * API字段映射，避免暴露数据库真是字段
-     * @param $lesson
-     * @return array
-     */
-    private function transform($lesson)
-    {
-        //这里只返回映射后的字段，原来的字段都被隐藏掉
-        return [
-            'lesson_title' => $lesson['title'],
-            'content' => $lesson['body'],
-            // (boolean) 强制返回boolean类型数据
-            'is_free' => (boolean) $lesson['free']
-        ];
     }
 }
