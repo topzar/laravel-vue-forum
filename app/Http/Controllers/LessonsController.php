@@ -4,13 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Lesson;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class LessonsController extends Controller
 {
 
     public function index()
     {
-        return Lesson::all();
+
+        /**
+         * 1.要有状态码和提示信息
+         * 2.不要暴露数据库字段
+         */
+        $lessons = Lesson::all();
+        return Response::json([
+            'code' => 200,
+            'message' => 'success',
+            'data' => $this->transformCollection($lessons)
+        ]);
+
     }
 
     /**
@@ -37,7 +49,13 @@ class LessonsController extends Controller
 
     public function show($id)
     {
-        return Lesson::findOrFail($id);
+        $lesson = Lesson::findOrFail($id);
+        //dd($lesson);
+        return Response::json([
+            'code' => 200,
+            'message' => 'success',
+            'data' => $this->transform($lesson)
+        ]);
     }
 
     /**
@@ -72,5 +90,31 @@ class LessonsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * API字段映射，处理Collection数据
+     * @param $lessons
+     * @return array
+     */
+    private function transformCollection($lessons)
+    {
+        return array_map([$this, 'transform'], $lessons->toArray());
+    }
+
+    /**
+     * API字段映射，避免暴露数据库真是字段
+     * @param $lesson
+     * @return array
+     */
+    private function transform($lesson)
+    {
+        //这里只返回映射后的字段，原来的字段都被隐藏掉
+        return [
+            'lesson_title' => $lesson['title'],
+            'content' => $lesson['body'],
+            // (boolean) 强制返回boolean类型数据
+            'is_free' => (boolean) $lesson['free']
+        ];
     }
 }
