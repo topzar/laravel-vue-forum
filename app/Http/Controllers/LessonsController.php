@@ -7,7 +7,7 @@ use App\Transformer\LessonTransformer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
-class LessonsController extends Controller
+class LessonsController extends ApiController
 {
 
     protected $lessonTransformer;
@@ -22,11 +22,9 @@ class LessonsController extends Controller
 
         $lessons = Lesson::all();
 
-        return Response::json([
-            'code' => 200,
-            'message' => 'success',
-            'data' => $this->lessonTransformer->transformCollection($lessons->toArray())
-        ]);
+        $this->response($lessons);
+
+        return $this->responseSuccess($this->lessonTransformer->transformCollection($lessons->toArray()));
 
     }
 
@@ -50,17 +48,10 @@ class LessonsController extends Controller
         $lesson = Lesson::find($id);
 
         if (! $lesson) {
-            return Response::json([
-                'code' => 404,
-                'message' => 'Not found lesson',
-            ]);
+            return $this->responseNotFound();
         }
 
-        return Response::json([
-            'code' => 200,
-            'message' => 'success',
-            'data' => $this->lessonTransformer->transform($lesson)
-        ]);
+        return $this->responseSuccess($this->lessonTransformer->transform($lesson));
 
     }
 

@@ -11,6 +11,42 @@ use Illuminate\Support\Facades\Response;
 class ApiController extends Controller
 {
 
+    protected $statusCode = 200;
+
+    private function getStatusCode()
+    {
+        return $this->statusCode;
+    }
+
+    public function setStatusCode($statusCode)
+    {
+        $this->statusCode = $statusCode;
+
+        return $this;
+    }
+
+    public function responseNotFound($message = 'Not Found')
+    {
+        return $this->setStatusCode(404)->responseError($message);
+    }
+
+    private function responseError($message)
+    {
+        return $this->response([
+            'status' => 'Failed',
+            'status_code' => $this->getStatusCode(),
+            'message' => $message
+        ]);
+    }
+
+    public function responseSuccess($data)
+    {
+        return $this->response([
+            'status' => 'Success',
+            'status_code' => $this->getStatusCode(),
+            'data' => $data
+        ]);
+    }
     /**
      * API数据返回基础方法
      * @param $data
@@ -18,10 +54,7 @@ class ApiController extends Controller
      */
     public function response($data)
     {
-        //dd($data);
-        return Response::json([
-            'data' => $data
-        ]);
+        return Response::json($data);
     }
 
 }
