@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('foo', function () {
+    return view('form');
+});
+Route::post('form', function () {
+    dd(request()->all());
+});
