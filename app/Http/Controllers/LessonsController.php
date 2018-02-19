@@ -45,7 +45,16 @@ class LessonsController extends Controller
 
     public function show($id)
     {
-        $lesson = Lesson::findOrFail($id);
+
+        //这里不能用findOrFail方法，因为无法自定义返回错误信息
+        $lesson = Lesson::find($id);
+
+        if (! $lesson) {
+            return Response::json([
+                'code' => 404,
+                'message' => 'Not found lesson',
+            ]);
+        }
 
         return Response::json([
             'code' => 200,
