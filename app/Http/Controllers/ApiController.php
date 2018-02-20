@@ -32,16 +32,16 @@ class ApiController extends Controller
 
     private function responseError($message)
     {
-        return $this->response([
+        return $this->responseHanler([
             'status' => 'Failed',
             'status_code' => $this->getStatusCode(),
             'message' => $message
         ]);
     }
 
-    public function responseSuccess($data)
+    public function response($data)
     {
-        return $this->response([
+        return $this->responseHanler([
             'status' => 'Success',
             'status_code' => $this->getStatusCode(),
             'data' => $data
@@ -52,7 +52,7 @@ class ApiController extends Controller
      * @param $data
      * @return mixed
      */
-    public function response($data)
+    public function responseHanler($data)
     {
         return Response::json($data);
     }

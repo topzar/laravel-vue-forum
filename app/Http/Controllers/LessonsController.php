@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Lesson;
 use App\Transformer\LessonTransformer;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
 
 class LessonsController extends ApiController
 {
@@ -24,7 +23,7 @@ class LessonsController extends ApiController
 
         $this->response($lessons);
 
-        return $this->responseSuccess($this->lessonTransformer->transformCollection($lessons->toArray()));
+        return $this->response($this->lessonTransformer->transformCollection($lessons->toArray()));
 
     }
 
@@ -48,10 +47,10 @@ class LessonsController extends ApiController
         $lesson = Lesson::find($id);
 
         if (! $lesson) {
-            return $this->responseNotFound();
+            return $this->responseNotFound('Not Found Any Lesson...');
         }
 
-        return $this->responseSuccess($this->lessonTransformer->transform($lesson));
+        return $this->response($this->lessonTransformer->transform($lesson));
 
     }
 
