@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('email/confirm', 'EmailController@confirm')->name('email_confirm');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
