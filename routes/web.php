@@ -16,7 +16,10 @@ Route::get('/', function () {
 });
 
 Route::get('email/confirm', 'EmailController@confirm')->name('email_confirm');
+Route::get('email/test', 'EmailController@test')->name('email_confirm');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['namespace'=> 'Home'], function () {
+    Route::get('/home', 'indexController@index')->name('home');
+});
