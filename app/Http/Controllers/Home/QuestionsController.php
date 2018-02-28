@@ -38,7 +38,8 @@ class QuestionsController extends Controller
 
     public function show($id)
     {
-        return Question::findOrFail($id);
+        $question = Question::findOrFail($id);
+        return view('question.show',compact('question'));
     }
 
 
