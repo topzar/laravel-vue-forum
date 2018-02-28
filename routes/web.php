@@ -22,4 +22,8 @@ Auth::routes();
 
 Route::group(['namespace'=> 'Home'], function () {
     Route::get('/home', 'indexController@index')->name('home');
+    Route::resource('question', 'QuestionsController',['names' => [
+        'create' => 'question.create',
+        'show' => 'question.show',
+    ]]);
 });
