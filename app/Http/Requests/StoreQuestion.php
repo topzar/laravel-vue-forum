@@ -24,7 +24,7 @@ class StoreQuestion extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:20|max:255',
+            'title' => 'required|min:10|max:255',
             'body' => 'required|min:60'
         ];
     }
