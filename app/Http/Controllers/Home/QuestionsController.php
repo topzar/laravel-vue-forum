@@ -33,7 +33,8 @@ class QuestionsController extends Controller
 
     public function store(StoreQuestion $request)
     {
-        dd($request->get('topics'));
+        $topics = $this->normalizeTopics($request->get('topics'));
+
         $data = [
             'title' => $request->get('title'),
             'body' => $request->get('body'),
@@ -42,13 +43,18 @@ class QuestionsController extends Controller
 
         $question = Question::create($data);
 
+        //操作问题和话题的关联表 attach()
+        $question->topics()->attach($topics);
+
         return redirect()->route('question.show',$question->id);
     }
 
 
     public function show($id)
     {
-        $question = Question::findOrFail($id);
+        //$question = Question::findOrFail($id);
+        $question = Question::where('id', $id)->with('topics')->first();
+
         return view('question.show',compact('question'));
     }
 
@@ -68,5 +74,16 @@ class QuestionsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function normalizeTopics($topics)
+    {
+        return collect($topics)->map(function ($topic) {
+
+            //更新该话题的问题总数
+            Topic::find($topic)->increment('questions_count');
+            return $topic;
+
+        })->toArray();
     }
 }
