@@ -21,7 +21,7 @@
                             </div>
                             <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
                                 <!-- 编辑器容器 -->
-                                <script id="container" name="body" type="text/plain">{!! old('body') !!}</script>
+                                <script id="container" name="body" type="text/plain" style="min-height: 200px;">{!! old('body') !!}</script>
                                 @if ($errors->has('body'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('body') }}</strong>
