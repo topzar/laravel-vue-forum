@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Requests\StoreQuestion;
+use App\Topic;
 use Auth;
 use App\Question;
 use Illuminate\Http\Request;
@@ -25,12 +26,14 @@ class QuestionsController extends Controller
 
     public function create()
     {
-        return view('question.create');
+        $topics = Topic::select('id','name')->orderBy('id','desc')->get();
+
+        return view('question.create',compact('topics'));
     }
 
     public function store(StoreQuestion $request)
     {
-
+        dd($request->get('topics'));
         $data = [
             'title' => $request->get('title'),
             'body' => $request->get('body'),

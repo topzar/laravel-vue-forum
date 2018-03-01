@@ -20,15 +20,11 @@
                                 @endif
                             </div>
                             <div class="form-group">
+                                @foreach($topics as $topic)
                                 <label class="checkbox-inline">
-                                    <input type="checkbox" id="inlineCheckbox1" value="option1" name="topics[]"> Laravel
+                                    <input type="checkbox" id="inlineCheckbox1" value="{{ $topic->id }}" name="topics[]"> {{ $topic->name }}
                                 </label>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" id="inlineCheckbox2" value="option2" name="topics[]"> PHP
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" id="inlineCheckbox3" value="option3" name="topics[]"> Vue.js
-                                </label>
+                                @endforeach
                                 @if ($errors->has('topics'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('topics') }}</strong>
