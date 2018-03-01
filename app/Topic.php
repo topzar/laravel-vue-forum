@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Topic extends Model
 {
 
-    protected $fillable = ['name', 'question_id', 'topic_id'];
+    protected $fillable = ['name', 'bio', 'questions_count'];
 
     /**
      * 话题和问题的关联关系
