@@ -19,9 +19,25 @@
                                     </span>
                                 @endif
                             </div>
+                            <div class="form-group">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" id="inlineCheckbox1" value="option1" name="topics[]"> Laravel
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" id="inlineCheckbox2" value="option2" name="topics[]"> PHP
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" id="inlineCheckbox3" value="option3" name="topics[]"> Vue.js
+                                </label>
+                                @if ($errors->has('topics'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('topics') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                             <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
                                 <!-- 编辑器容器 -->
-                                <script id="container" name="body" type="text/plain" style="min-height: 200px;">{!! old('body') !!}</script>
+                                <script id="container" name="body" type="text/plain">{!! old('body') !!}</script>
                                 @if ($errors->has('body'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('body') }}</strong>
