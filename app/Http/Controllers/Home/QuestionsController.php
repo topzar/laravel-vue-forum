@@ -11,6 +11,12 @@ use App\Http\Controllers\Controller;
 class QuestionsController extends Controller
 {
 
+    public function __construct()
+    {
+        //定义中间件 except这些方法将不受中间件约束
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     public function index()
     {
         return 'question.index';
