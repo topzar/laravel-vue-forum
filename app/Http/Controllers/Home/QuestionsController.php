@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Http\Requests\StoreQuestion;
 use Auth;
 use App\Question;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class QuestionsController extends Controller
         return view('question.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreQuestion $request)
     {
 
         $data = [
