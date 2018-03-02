@@ -8,6 +8,11 @@
                     <div class="panel-heading">
                         @if( Auth::check() && Auth::user()->isOwner($question))
                             <a href="{{ route('question.edit',$question->id) }}" class="btn btn-primary">编辑问题</a>
+                            <form action="{{ route('question.destroy', $question->id) }}" method="post">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+                                <button type="submit" class="btn btn-danger">删除</button>
+                            </form>
                         @endif
                         {{ $question->title }}
                         @foreach($question->topics as $topic)

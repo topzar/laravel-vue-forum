@@ -96,7 +96,14 @@ class QuestionsController extends Controller
 
     public function destroy($id)
     {
-        //
+        $question = $this->questionRepository->byId($id);
+
+        if (Auth::user()->isOwner($question)) {
+            $question->delete();
+            return redirect('/');
+        }
+
+        abort(403, 'Not permission...');
     }
 
 }
