@@ -8354,3 +8354,14 @@ button.close {
   min-height: 200px;
 }
 
+.questions-bar {
+  margin-top: -20px;
+  padding: 40px 0;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.questions-list {
+  margin-bottom: 20px;
+}
+
