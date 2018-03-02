@@ -10,6 +10,11 @@ use App\Topic;
 class QuestionRepository
 {
 
+    public function getAllQuestions()
+    {
+        return  Question::notHidden()->latest()->get();
+    }
+
     public function create(array $data)
     {
         return Question::create($data);

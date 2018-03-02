@@ -17,4 +17,25 @@ class Question extends Model
     {
         return $this->belongsToMany(Topic::class)->withTimestamps();
     }
+
+    /**
+     * 问题和用户的关联关系 一对一
+     * 用法 $question->user
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * 过滤指定字段 scope属性
+     * 用法 ORM::notHidden()
+     * @param $query
+     * @return mixed
+     */
+    public function scopeNotHidden($query)
+    {
+        return $query->where('is_hidden', 0);
+    }
 }
