@@ -32,7 +32,14 @@
                 @endforeach
             </div>
             <div class="col-md-4">
-                <a href="{{ route('question.create') }}"> 登录发布问题</a>
+                <div class="panel panel-default">
+                    <div class="panel-heading">热门话题</div>
+                    <div class="panel-body">
+                        @foreach($topics as $topic)
+                            <a href="" class="label label-success" style="margin-bottom: 4px;display: inline-block">{{ $topic->name }}</a>
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -25,7 +25,11 @@ class QuestionsController extends Controller
     public function index()
     {
         $questions = $this->questionRepository->getAllQuestions();
-        return view('question.index', compact('questions'));
+
+        //topics
+        $topics = Topic::select('id','name')->orderBy('id','desc')->get();
+
+        return view('question.index', compact('questions','topics'));
     }
 
 
