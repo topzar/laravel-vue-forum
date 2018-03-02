@@ -29,6 +29,15 @@ class Question extends Model
     }
 
     /**
+     * 问题和答案的关联关系 一对多hasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
+
+    /**
      * 过滤指定字段 scope属性
      * 用法 ORM::notHidden()
      * @param $query

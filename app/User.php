@@ -31,4 +31,9 @@ class User extends Authenticatable
     {
         return $this->id == $object->user_id;
     }
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
 }
