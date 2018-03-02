@@ -26,4 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isOwner($object)
+    {
+        return $this->id == $object->user_id;
+    }
 }

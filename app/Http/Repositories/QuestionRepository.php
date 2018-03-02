@@ -15,6 +15,11 @@ class QuestionRepository
         return Question::create($data);
     }
 
+    public function byId($id)
+    {
+        return  Question::find($id);
+    }
+
     /** 问题和话题
      * @param $id 问题id
      * @return \Illuminate\Database\Eloquent\Model|null|object|static
@@ -22,6 +27,11 @@ class QuestionRepository
     public function byIdWithTopics($id)
     {
         return Question::where('id', $id)->with('topics')->first();
+    }
+
+    public function byIdWithTopicId($id)
+    {
+
     }
 
     /**
@@ -37,6 +47,13 @@ class QuestionRepository
             Topic::find($topic)->increment('questions_count');
             return $topic;
 
+        })->toArray();
+    }
+
+    public function questionTopicIdsBy($questionTopics)
+    {
+        return collect($questionTopics)->map(function ($questionTopic) {
+            return (int) $questionTopic['id'];
         })->toArray();
     }
 }

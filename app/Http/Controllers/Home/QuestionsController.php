@@ -65,13 +65,31 @@ class QuestionsController extends Controller
 
     public function edit($id)
     {
-        //
+        $question = $this->questionRepository->byIdWithTopics($id);
+        //dd($question);
+        $questionTopics = $this->questionRepository->questionTopicIdsBy($question->topics);
+        //dd($questionTopics);
+        //dd($question->topics->select('id')->get());
+        $topics = Topic::select('id','name')->orderBy('id','desc')->get();
+
+        return view('question.edit',compact('question','questionTopics', 'topics'));
     }
 
 
     public function update(Request $request, $id)
     {
-        //
+        $question = $this->questionRepository->byId($id);
+        $topics = $this->questionRepository->normalizeTopics($request->get('topics'));
+
+        $question->update([
+            'title' => $request->get('title'),
+            'body' => $request->get('body')
+        ]);
+
+        //更新关联表
+        $question->topics()->sync($topics);
+
+        return redirect()->route('question.show', $question->id);
     }
 
 
