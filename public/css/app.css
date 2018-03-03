@@ -8365,6 +8365,11 @@ button.close {
   margin-bottom: 20px;
 }
 
+.questions-user {
+  text-align: center;
+  padding-top: 20px;
+}
+
 body {
   padding-top: 90px;
   /*background: #ECF0F1;*/
