@@ -4,7 +4,7 @@
     <div class="container-fluid questions-bar">
         <div class="container">
             <h3>
-                论坛
+                {{ $topic->name }}
                 <a href="{{ route('question.create') }}" class="btn btn-success pull-right"> 发布问题</a>
             </h3>
         </div>
@@ -12,7 +12,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                @foreach($questions as $question)
+                @foreach($topic->questions as $question)
                     <div class="media questions-list">
                         <div class="media-left">
                             <a href="#">
@@ -32,23 +32,23 @@
                 @endforeach
             </div>
             <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">热门话题</div>
-                    <div class="panel-body">
-                        @foreach($topics as $topic)
-                            <a href="{{ route('topic.show', $topic->id) }}" class="label label-success" style="margin-bottom: 4px;display: inline-block">{{ $topic->name }}</a>
-                        @endforeach
-                    </div>
-                </div>
+                {{--<div class="panel panel-default">--}}
+                    {{--<div class="panel-heading">热门话题</div>--}}
+                    {{--<div class="panel-body">--}}
+                        {{--@foreach($topics as $topic)--}}
+                            {{--<a href="{{ route('topic.show', $topic->id) }}" class="label label-success" style="margin-bottom: 4px;display: inline-block">{{ $topic->name }}</a>--}}
+                        {{--@endforeach--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">活跃用户</div>
-                    <div class="panel-body">
-                        @foreach($users as $user)
-                            <img src="{{ $user->avatar }}" alt="" class="img-circle" style="height: 40px;margin-bottom: 4px; ">
-                        @endforeach
-                    </div>
-                </div>
+                {{--<div class="panel panel-default">--}}
+                    {{--<div class="panel-heading">活跃用户</div>--}}
+                    {{--<div class="panel-body">--}}
+                        {{--@foreach($users as $user)--}}
+                            {{--<img src="{{ $user->avatar }}" alt="" class="img-circle" style="height: 40px;margin-bottom: 4px; ">--}}
+                        {{--@endforeach--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
             </div>
         </div>

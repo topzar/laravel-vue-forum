@@ -22,9 +22,13 @@ Route::get('email/test', 'EmailController@test')->name('email_confirm');
 Auth::routes();
 
 Route::group(['namespace'=> 'Home'], function () {
+
     Route::get('/home', 'indexController@index')->name('home');
+
     Route::resource('question', 'QuestionsController',['names' => [
         'create' => 'question.create',
         'show' => 'question.show',
     ]]);
+
+    Route::get('topic/{id}', 'TopicController@show')->name('topic.show');
 });
