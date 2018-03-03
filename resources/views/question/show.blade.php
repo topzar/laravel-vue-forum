@@ -83,7 +83,7 @@
                             </span>
                         </h3>
                         <p>
-                            <button class="btn btn-default">关 注</button>
+                            <a href="{{ route('question.follow', $question->id) }}" class="btn btn-default">关注问题</a>
                             <button class="btn btn-success">私 信</button>
                         </p>
                     </div>
