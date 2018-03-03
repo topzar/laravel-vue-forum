@@ -40,6 +40,16 @@
                         @endforeach
                     </div>
                 </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">活跃用户</div>
+                    <div class="panel-body">
+                        @foreach($users as $user)
+                            <img src="{{ $user->avatar }}" alt="" class="img-circle" style="height: 40px;margin-bottom: 4px; ">
+                        @endforeach
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

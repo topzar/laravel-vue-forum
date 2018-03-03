@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use App\Http\Repositories\QuestionRepository;
 use App\Http\Requests\StoreQuestion;
 use App\Topic;
+use App\User;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -29,7 +30,10 @@ class QuestionsController extends Controller
         //topics
         $topics = Topic::select('id','name')->orderBy('id','desc')->get();
 
-        return view('question.index', compact('questions','topics'));
+        //users
+        $users = User::select('id','name','avatar')->orderBy('experience','desc')->get();
+
+        return view('question.index', compact('questions','topics','users'));
     }
 
 
