@@ -30,5 +30,7 @@ Route::group(['namespace'=> 'Home'], function () {
         'show' => 'question.show',
     ]]);
 
+    Route::post('question/{id}/answer', 'AnswerController@store')->name('question.answer');
+
     Route::get('topic/{id}', 'TopicController@show')->name('topic.show');
 });
