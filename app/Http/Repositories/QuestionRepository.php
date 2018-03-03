@@ -12,7 +12,7 @@ class QuestionRepository
 
     public function getAllQuestions()
     {
-        return  Question::notHidden()->latest()->get();
+        return  Question::notHidden()->latest()->paginate(10);
     }
 
     public function create(array $data)

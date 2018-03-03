@@ -30,13 +30,16 @@
                         </div>
                     </div>
                 @endforeach
+                <div>
+                    {{ $questions->links() }}
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">热门话题</div>
                     <div class="panel-body">
                         @foreach($topics as $topic)
-                            <a href="{{ route('topic.show', $topic->id) }}" class="label label-success" style="margin-bottom: 4px;display: inline-block">{{ $topic->name }}</a>
+                            <a href="{{ route('topic.show', $topic->id) }}" class="label label-default" style="margin-bottom: 4px;display: inline-block">{{ $topic->name }}</a>
                         @endforeach
                     </div>
                 </div>
