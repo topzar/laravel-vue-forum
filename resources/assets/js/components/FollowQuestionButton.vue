@@ -9,9 +9,9 @@
 
 <script>
     export default {
-        props:['question','user'],
+        props:['question'],
         mounted() {
-            this.$http.post('/api/question/followed', {'question': this.question, 'user': this.user}).then(response => {
+            this.$http.post('/api/question/followed', {'question': this.question}).then(response => {
                 //console.log(response.data)
                 this.followed = response.data.followed
             })
@@ -29,7 +29,7 @@
         },
         methods: {
             follow: function () {
-                this.$http.post('/api/question/follow', {'question': this.question, 'user': this.user}).then(response => {
+                this.$http.post('/api/question/follow', {'question': this.question}).then(response => {
                     //console.log(response.data)
                     this.followed = response.data.followed
                 })

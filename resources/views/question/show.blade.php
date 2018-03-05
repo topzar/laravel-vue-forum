@@ -83,7 +83,7 @@
                             </span>
                         </h3>
                         <p>
-                            <follow-question-button question="{{ $question->id }}" user="{{ Auth::id() }}"></follow-question-button>
+                            <follow-question-button question="{{ $question->id }}"></follow-question-button>
                             {{--@if( Auth::check())--}}
                                 {{--<a href="{{ route('question.follow', $question->id) }}" class="btn {{ Auth::user()->followed($question->id) ? 'btn-success' : 'btn-default'}} ">--}}
                                     {{--{{ Auth::user()->followed($question->id) ? '已关注' : '关注问题' }}--}}

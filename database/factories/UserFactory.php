@@ -20,7 +20,8 @@ $factory->define(App\User::class, function (Faker $faker) {
         'password' => bcrypt('password'),
         'confirmation_token' => str_random(20),
         'avatar' => $faker->imageUrl(120,120),
-        'experience' => $faker->numberBetween(1,999)
+        'experience' => $faker->numberBetween(1,999),
+        'api_token' => str_random(60)
     ];
 });
 

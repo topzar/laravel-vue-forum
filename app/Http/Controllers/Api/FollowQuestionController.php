@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Auth;
 use App\FollowQuestion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,9 +13,12 @@ class FollowQuestionController extends Controller
 
     public function followed(Request $request)
     {
+        $user = Auth::guard('api')->user();
+        //return response()->json($user);
+
         $followed = DB::table('follow_question')->where([
             'question_id' => $request->get('question'),
-            'user_id' => $request->get('user')
+            'user_id' => $user->id
         ])->count();
 
         if ($followed) {
@@ -26,8 +30,11 @@ class FollowQuestionController extends Controller
 
     public function follow(Request $request)
     {
+
+        $user = Auth::guard('api')->user();
+
         $follow = FollowQuestion::where('question_id', $request->get('question'))
-            ->where('user_id', $request->get('user'))
+            ->where('user_id', $user->id)
             ->first();
 
         if ($follow !== null) {
@@ -37,7 +44,7 @@ class FollowQuestionController extends Controller
 
         FollowQuestion::create([
             'question_id' => $request->get('question'),
-            'user_id' => $request->get('user')
+            'user_id' => $user->id
         ]);
 
         return response()->json(['followed' => true]);
