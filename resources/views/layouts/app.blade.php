@@ -36,7 +36,8 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li class="active"><a href="{{ route('question.index') }}">问答<span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">博客</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
