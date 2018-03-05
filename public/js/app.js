@@ -1681,7 +1681,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         var _this = this;
 
-        this.$http.post('/api/question/follower', { 'question': this.question, 'user': this.user }).then(function (response) {
+        this.$http.post('/api/question/followed', { 'question': this.question, 'user': this.user }).then(function (response) {
             //console.log(response.data)
             _this.followed = response.data.followed;
         });
