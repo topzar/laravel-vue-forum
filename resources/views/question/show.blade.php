@@ -83,8 +83,12 @@
                             </span>
                         </h3>
                         <p>
-                            <a href="{{ route('question.follow', $question->id) }}" class="btn btn-default">关注问题</a>
-                            <button class="btn btn-success">私 信</button>
+                            @if( Auth::check())
+                                <a href="{{ route('question.follow', $question->id) }}" class="btn {{ Auth::user()->followed($question->id) ? 'btn-success' : 'btn-default'}} ">
+                                    {{ Auth::user()->followed($question->id) ? '已关注' : '关注问题' }}
+                                </a>
+                                <button class="btn btn-success">私 信</button>
+                            @endif
                         </p>
                     </div>
                 </div>

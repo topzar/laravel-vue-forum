@@ -37,11 +37,32 @@ class User extends Authenticatable
         return $this->hasMany(Answer::class);
     }
 
+    /**
+     * 用户和用户关注问题的关系 多对多 BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function follows()
+    {
+        return $this->belongsToMany(Question::class, 'follow_question')->withTimestamps();
+    }
+
+    /**
+     * 关注问题 toggle 方法（自动删减和递增）
+     * @param $question
+     * @return array
+     */
     public function followThis($question)
     {
-        return FollowQuestion::create([
-            'question_id' => $question,
-            'user_id' => $this->id
-        ]);
+        return $this->follows()->toggle($question);
+    }
+
+    /**
+     * 是否关注某一个问题
+     * @param $question
+     * @return int
+     */
+    public function followed($question)
+    {
+        return $this->follows()->where('question_id', $question)->count();
     }
 }

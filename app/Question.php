@@ -38,6 +38,15 @@ class Question extends Model
     }
 
     /**
+     * 问题的关注者
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'follow_question')->withTimestamps();
+    }
+
+    /**
      * 过滤指定字段 scope属性
      * 用法 ORM::notHidden()
      * @param $query
