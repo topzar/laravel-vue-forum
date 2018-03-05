@@ -1,26 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="container-fluid question_title_bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <h3>{{ $question->title }}</h3>
+                    <div class="question-topics">
+                        @foreach($question->topics as $topic)
+                            <a href="{{ route('topic.show', $topic->id) }}" class="label" style="margin:0 2px;"> # {{ $topic->name }} </a> &nbsp;
+                        @endforeach
+                    </div>
+                    <div class="question_action">
+                        <follow-question-button question="{{ $question->id }}"></follow-question-button>
+                        @if( Auth::check() && Auth::user()->isOwner($question))
+                            <a href="{{ route('question.edit',$question->id) }}" class="btn edit-question">编辑问题</a>
+                            <form action="{{ route('question.destroy', $question->id) }}" method="post" style="display: inline-block">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+                                <button type="submit" class="btn delete-question">删除</button>
+                            </form>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-md-3 question-statics">
+                    <h4>关注者: {{ $question->followers_count }}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
     @include('vendor.ueditor.assets')
     <div class="container">
         <div class="row">
             <div class="col-md-9">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        @if( Auth::check() && Auth::user()->isOwner($question))
-                            <div class="btn-group">
-                                <a href="{{ route('question.edit',$question->id) }}" class="btn btn-primary">编辑问题</a>
-                                <form action="{{ route('question.destroy', $question->id) }}" method="post">
-                                    {{ method_field('DELETE') }}
-                                    {{ csrf_field() }}
-                                    <button type="submit" class="btn btn-danger">删除</button>
-                                </form>
-                            </div>
-                        @endif
                         <h3>{{ $question->title }}</h3>
-                        @foreach($question->topics as $topic)
-                            <a href="{{ route('topic.show', $topic->id) }}" class="label label-info" style="margin:0 2px;"> # {{ $topic->name }} </a> &nbsp;
-                        @endforeach
                     </div>
                     <div class="panel-body">
                         {!! $question->body !!}
@@ -83,13 +98,10 @@
                             </span>
                         </h3>
                         <p>
-                            <follow-question-button question="{{ $question->id }}"></follow-question-button>
-                            {{--@if( Auth::check())--}}
-                                {{--<a href="{{ route('question.follow', $question->id) }}" class="btn {{ Auth::user()->followed($question->id) ? 'btn-success' : 'btn-default'}} ">--}}
-                                    {{--{{ Auth::user()->followed($question->id) ? '已关注' : '关注问题' }}--}}
-                                {{--</a>--}}
-                                {{--<button class="btn btn-success">私 信</button>--}}
-                            {{--@endif--}}
+                            @if( Auth::check())
+                                <a href="{{ route('question.follow', $question->id) }}" class="btn btn-default">关 注</a>
+                                <button class="btn btn-primary">私 信</button>
+                            @endif
                         </p>
                     </div>
                 </div>

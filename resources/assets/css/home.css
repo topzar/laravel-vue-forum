@@ -14,3 +14,38 @@
     text-align: center;
     padding-top: 20px;
 }
+.question_title_bar{
+    padding: 20px 0;
+    background: #fff;
+    margin-bottom: 20px;
+    margin-top: -30px;
+}
+.question_title_bar .question-topics{
+    margin-bottom: 20px;
+}
+.question_title_bar .question-topics .label {
+    background: 0 0;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 6px;
+    text-align: center;
+    border: 1px solid #F3F3F3;
+    color: #808080;
+    margin: 6px 6px 0 0;
+    border-radius: 3px;
+    font-size: 12px;
+}
+.question_title_bar .question-topics .label:hover{
+    border:1px solid #1abc9c;color: #1abc9c;
+}
+.question_title_bar .question-statics{
+    text-align: center;
+    padding-top: 10px;
+}
+.question_title_bar .edit-question{
+    color: #3498DB;
+}
+.question_title_bar .delete-question{
+    color: #E74C3C;
+}
