@@ -89,20 +89,34 @@
 
             </div>
             <div class="col-md-3">
-                <div class="panel panel-default questions-user">
-                    <div class="panel-body">
-                        <img src="{{ $question->user->avatar }}" alt="" class="img-circle" style="height: 60px;">
-                        <h3>
-                            <span>
-                                {{ $question->user->name }}
-                            </span>
-                        </h3>
+                <div class="media question-author">
+                    <h4 class="question-author-name">关于作者</h4>
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="{{ $question->user->avatar }}" alt="">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">{{ $question->user->name }}</h4>
+                        哥哥v个人股
+                    </div>
+                    <div class="author-statics">
                         <p>
-                            @if( Auth::check())
-                                <a href="{{ route('question.follow', $question->id) }}" class="btn btn-default">关 注</a>
-                                <button class="btn btn-primary">私 信</button>
-                            @endif
+                            <span>问题</span>
+                            <span>1</span>
                         </p>
+                        <p>
+                            <span>回答</span>
+                            <span>34</span>
+                        </p>
+                        <p>
+                            <span>粉丝</span>
+                            <span>85</span>
+                        </p>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary">关 注</button>
+                        <button class="btn btn-info">私 信</button>
                     </div>
                 </div>
             </div>

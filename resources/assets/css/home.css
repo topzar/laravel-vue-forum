@@ -49,3 +49,30 @@
 .question_title_bar .delete-question{
     color: #E74C3C;
 }
+.question-author{
+    background: #fff;
+    width: 100%;
+    padding: 15px;
+}
+.question-author .question-author-name{
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    margin:0 0 20px 0;
+    padding: 4px 0;
+    border-bottom: 1px solid #ebedef;
+}
+.question-author .author-statics{
+    width: 100%;
+    display: flex;
+    flex-direction:row;
+    text-align: center;
+    margin-top: 20px;
+}
+.question-author .author-statics p {
+    width: 33.33%;
+}
+.question-author .author-statics p span {
+    width: 100%;
+    display: block;
+}
