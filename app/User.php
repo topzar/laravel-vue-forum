@@ -38,6 +38,15 @@ class User extends Authenticatable
     }
 
     /**
+     * 用户和用户的关注关系 多对多
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function followers()
+    {
+        return $this->belongsToMany(self::class, 'followers', 'follower_id', 'followed_id')->withTimestamps();
+    }
+
+    /**
      * 用户和用户关注问题的关系 多对多 BelongsToMany
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
