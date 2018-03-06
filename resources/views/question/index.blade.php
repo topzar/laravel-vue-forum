@@ -11,20 +11,20 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-9">
                 @foreach($questions as $question)
                     <div class="media questions-list">
                         <div class="media-left">
                             <a href="#">
-                                <img class="media-object img-circle" src="{{ asset($question->user->avatar) }}" alt="..." height="60px">
+                                <img class="media-object img-circle questions-user-avatar" src="{{ asset($question->user->avatar) }}" alt="...">
                             </a>
                         </div>
                         <div class="media-body">
                             <h4 class="media-heading">
                                 <a href="{{ route('question.show', $question->id) }}" class="media-heading-title"> {{ $question->title }} </a>
                             </h4>
-                            <div class="questions_info">
-                                <span>由 {{$question->user->name}}</span>
+                            <div class="questions-info">
+                                <span>由 <a href="{{ route('user.home', $question->user->name) }}">{{$question->user->name}}</a></span>
                                 <span>发布于 {{$question->updated_at}}</span>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                     {{ $questions->links() }}
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">热门话题</div>
                     <div class="panel-body">

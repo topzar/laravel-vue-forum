@@ -8385,9 +8385,18 @@ button.close {
   font-size: 16px;
 }
 
+.questions-list .questions-info a {
+  color: #1ABC9C;
+}
+
 .questions-user {
   text-align: center;
   padding-top: 20px;
+}
+
+.questions-list .questions-user-avatar {
+  width: 40px;
+  height: 40px;
 }
 
 .question_title_bar {
@@ -8462,7 +8471,7 @@ button.close {
 }
 
 .question-author .author-statics p {
-  width: 33.33%;
+  width: 25%;
 }
 
 .question-author .author-statics p span {

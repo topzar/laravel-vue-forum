@@ -95,9 +95,13 @@
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading">{{ $question->user->name }}</h4>
-                        哥哥v个人股
+                        <span class="label label-default">新手上路</span>
                     </div>
                     <div class="author-statics">
+                        <p>
+                            <span>积分</span>
+                            <span>{{ $question->user->experience }}</span>
+                        </p>
                         <p>
                             <span>问题</span>
                             <span>1</span>
