@@ -8,7 +8,24 @@
     margin-bottom: 20px;
 }
 .questions-list{
-    margin-bottom: 20px;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: #818181;
+    margin: 0 0 1.5em;
+    border-bottom: 1px solid #f1f0f0;
+    padding: 0 0 1.5em;
+}
+.questions-list .media-heading-title {
+    color: #4d545d;
+    vertical-align: baseline;
+    line-height: 1.5;
+    font-weight: 600;
+    font-size: 16px;
 }
 .questions-user{
     text-align: center;

@@ -16,12 +16,12 @@
                     <div class="media questions-list">
                         <div class="media-left">
                             <a href="#">
-                                <img class="media-object img-rounded" src="{{ asset($question->user->avatar) }}" alt="..." height="60px">
+                                <img class="media-object img-circle" src="{{ asset($question->user->avatar) }}" alt="..." height="60px">
                             </a>
                         </div>
                         <div class="media-body">
                             <h4 class="media-heading">
-                                <a href="{{ route('question.show', $question->id) }}"> {{ $question->title }} </a>
+                                <a href="{{ route('question.show', $question->id) }}" class="media-heading-title"> {{ $question->title }} </a>
                             </h4>
                             <div class="questions_info">
                                 <span>由 {{$question->user->name}}</span>
@@ -47,9 +47,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">活跃用户</div>
                     <div class="panel-body">
-                        @foreach($users as $user)
-                            <img src="{{ $user->avatar }}" alt="" class="img-circle" style="height: 40px;margin-bottom: 4px; ">
-                        @endforeach
+                        {{--@foreach($users as $user)--}}
+                            {{--<img src="{{ $user->avatar }}" alt="" class="img-circle" style="height: 40px;margin-bottom: 4px; ">--}}
+                        {{--@endforeach--}}
                     </div>
                 </div>
 
