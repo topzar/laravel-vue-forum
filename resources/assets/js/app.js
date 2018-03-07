@@ -18,6 +18,7 @@ Vue.prototype.$http = require('axios');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('follow-question-button', require('./components/FollowQuestionButton.vue'));
+Vue.component('user-follow-button', require('./components/UserFollowButton.vue'));
 
 const app = new Vue({
     el: '#app'

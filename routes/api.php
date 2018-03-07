@@ -25,4 +25,7 @@ Route::group([
     Route::post('question/followed', 'FollowQuestionController@followed');
     Route::post('question/follow', 'FollowQuestionController@follow');
 
+    Route::get('user/{user}/followed', 'FollowUserController@followed');
+    Route::post('user/follow', 'FollowUserController@follow');
+
 });

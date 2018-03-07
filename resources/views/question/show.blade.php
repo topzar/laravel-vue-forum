@@ -116,7 +116,7 @@
                         </p>
                     </div>
                     <div>
-                        <button class="btn btn-primary">关 注</button>
+                        <user-follow-button user="{{ $question->user->id }}"></user-follow-button>
                         <button class="btn btn-info">私 信</button>
                     </div>
                 </div>
