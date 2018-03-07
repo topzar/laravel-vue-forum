@@ -35,4 +35,6 @@ Route::group(['namespace'=> 'Home'], function () {
     Route::get('question/{id}/follow', 'QuestionFollowController@follow')->name('question.follow');
 
     Route::get('topic/{id}', 'TopicController@show')->name('topic.show');
+
+    Route::get('notifications', 'NotificationController@index')->name('notifications');
 });

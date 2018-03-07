@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Notifications\UserFollowNotification;
 use Auth;
 use App\Http\Repositories\UserRepository;
 use App\Http\Controllers\Controller;
@@ -45,6 +46,7 @@ class FollowUserController extends Controller
         if (count($follow['detached'])  > 0) {
 
             //TODO 发送站内通知
+            $userToFollow->notify(new UserFollowNotification());
 
             $userToFollow->decrement('followers_count');
             return response()->json(['followed' => false]);
