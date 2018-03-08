@@ -46,7 +46,7 @@
                         @foreach($question->answers as $answer)
                             <div class="media">
                                 <div class="media-left">
-                                    <span>{{ $answer->votes_count }}个赞</span>
+                                    <votes-answer answer="{{ $answer->id }}" votes_count="{{$answer->votes_count}}"></votes-answer>
                                 </div>
                                 <div class="media-body">
                                     <h4 class="media-heading">

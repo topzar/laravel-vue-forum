@@ -1763,6 +1763,58 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
+/***/ "./node_modules/_babel-loader@7.1.3@babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/_vue-loader@13.7.1@vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/VoteForAnswer.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['answer', 'votes_count'],
+    mounted: function mounted() {
+        var _this = this;
+
+        this.$http.post('/api/answer/' + this.answer + '/voted').then(function (response) {
+            //console.log(response.data)
+            _this.voted = response.data.voted;
+        });
+        //console.log('Component mounted.')
+    },
+    data: function data() {
+        return {
+            voted: false
+        };
+    },
+
+    computed: {
+        text: function text() {
+            return this.votes_count;
+        }
+    },
+    methods: {
+        vote: function vote() {
+            var _this2 = this;
+
+            this.$http.post('/api/answer/vote', { 'answer': this.answer }).then(function (response) {
+                //console.log(response.data)
+                _this2.voted = response.data.voted;
+                response.data.voted ? _this2.votes_count++ : _this2.votes_count--;
+            });
+        }
+    }
+});
+
+/***/ }),
+
 /***/ "./node_modules/_bootstrap-sass@3.3.7@bootstrap-sass/assets/javascripts/bootstrap.js":
 /***/ (function(module, exports) {
 
@@ -32216,6 +32268,32 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
+/***/ "./node_modules/_vue-loader@13.7.1@vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-168392f6\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/_vue-loader@13.7.1@vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/VoteForAnswer.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("button", {
+    staticClass: "btn",
+    class: { "btn-success": _vm.voted, "btn-default": !_vm.voted },
+    domProps: { textContent: _vm._s(_vm.text) },
+    on: { click: _vm.vote }
+  })
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-168392f6", module.exports)
+  }
+}
+
+/***/ }),
+
 /***/ "./node_modules/_vue-loader@13.7.1@vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-30105e36\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/_vue-loader@13.7.1@vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/UserFollowButton.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -43211,6 +43289,7 @@ Vue.prototype.$http = __webpack_require__("./node_modules/_axios@0.17.1@axios/in
 Vue.component('example-component', __webpack_require__("./resources/assets/js/components/ExampleComponent.vue"));
 Vue.component('follow-question-button', __webpack_require__("./resources/assets/js/components/FollowQuestionButton.vue"));
 Vue.component('user-follow-button', __webpack_require__("./resources/assets/js/components/UserFollowButton.vue"));
+Vue.component('votes-answer', __webpack_require__("./resources/assets/js/components/VoteForAnswer.vue"));
 
 var app = new Vue({
   el: '#app'
@@ -43414,6 +43493,54 @@ if (false) {(function () {
     hotAPI.createRecord("data-v-30105e36", Component.options)
   } else {
     hotAPI.reload("data-v-30105e36", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/VoteForAnswer.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__("./node_modules/_vue-loader@13.7.1@vue-loader/lib/component-normalizer.js")
+/* script */
+var __vue_script__ = __webpack_require__("./node_modules/_babel-loader@7.1.3@babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/_vue-loader@13.7.1@vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/VoteForAnswer.vue")
+/* template */
+var __vue_template__ = __webpack_require__("./node_modules/_vue-loader@13.7.1@vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-168392f6\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/_vue-loader@13.7.1@vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/VoteForAnswer.vue")
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/VoteForAnswer.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-168392f6", Component.options)
+  } else {
+    hotAPI.reload("data-v-168392f6", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
