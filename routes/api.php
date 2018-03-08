@@ -28,4 +28,8 @@ Route::group([
     Route::get('user/{user}/followed', 'FollowUserController@followed');
     Route::post('user/follow', 'FollowUserController@follow');
 
+    Route::post('answer/{id}/voted', 'VotesController@voted');
+    Route::post('answer/vote', 'VotesController@vote');
+
+
 });
