@@ -13,6 +13,7 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -48,12 +49,22 @@
                             <li><a href="{{ route('login') }}">登录</a></li>
                             <li><a href="{{ route('register') }}">注册</a></li>
                         @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->name }}
-                                    <span class="caret"></span>
-                                    <img src="{{ Auth::user()->avatar }}" alt="" class="img-circle img-responsive" style="height: 20px;display: inline-block;">
+                            <li>
+                                <a href="{{ route('notifications') }}" class="user_notification">
+                                    <i class="fa fa-bell"></i>&nbsp;
+                                    <span class="notifications_count">
+                                        {{ count(Auth::user()->notifications()) }}
+                                    </span>
                                 </a>
+                            </li>
+                            <li class="dropdown">
+                                <span href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true"
+                                    style="padding: 10px 15px;display: inline-block;"
+                                >
+                                    {{--{{ Auth::user()->name }}--}}
+                                    {{--<span class="caret"></span>--}}
+                                    <img src="{{ Auth::user()->avatar }}" alt="" class="img-rounded img-responsive" style="height: 34px;display: inline-block;">
+                                </span>
 
                                 <ul class="dropdown-menu">
                                     <li>
@@ -81,6 +92,24 @@
         @yield('content')
     </div>
 
+    <style>
+        .user_notification{
+            position: relative;
+        }
+        .user_notification .notifications_count{
+            height: 20px;
+            width: 20px;
+            text-align: center;
+            line-height: 20px;
+            background: #E74C3C;
+            display: inline-block;
+            color: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            right: 0;
+        }
+    </style>
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}"></script>
 </body>
