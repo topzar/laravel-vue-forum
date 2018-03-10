@@ -52,9 +52,11 @@
                             <li>
                                 <a href="{{ route('notifications') }}" class="user_notification">
                                     <i class="fa fa-bell"></i>&nbsp;
+                                    @if(count(Auth::user()->notifications))
                                     <span class="notifications_count">
-                                        {{ count(Auth::user()->notifications()) }}
+                                        {{ count(Auth::user()->notifications) }}
                                     </span>
+                                    @endif
                                 </a>
                             </li>
                             <li class="dropdown">
