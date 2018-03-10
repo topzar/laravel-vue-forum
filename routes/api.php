@@ -31,5 +31,6 @@ Route::group([
     Route::post('answer/{id}/voted', 'VotesController@voted');
     Route::post('answer/vote', 'VotesController@vote');
 
+    Route::post('message/storeMessageController', 'MessageController@store');
 
 });
