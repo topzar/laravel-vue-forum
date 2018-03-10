@@ -104,20 +104,20 @@
                         </p>
                         <p>
                             <span>问题</span>
-                            <span>1</span>
+                            <span>{{ $question->user->questions_count }}</span>
                         </p>
                         <p>
                             <span>回答</span>
-                            <span>34</span>
+                            <span>{{ $question->user->answers_count }}</span>
                         </p>
                         <p>
                             <span>粉丝</span>
-                            <span>85</span>
+                            <span>{{ $question->user->followers_count }}</span>
                         </p>
                     </div>
                     <div>
                         <user-follow-button user="{{ $question->user->id }}"></user-follow-button>
-                        <button class="btn btn-info">私 信</button>
+                        <send-message user="{{ $question->user->id }}" to_user="{{ $question->user->name }}"></send-message>
                     </div>
                 </div>
             </div>
