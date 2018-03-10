@@ -13,4 +13,9 @@ class UserRepository
     {
         return User::find($id);
     }
+
+    public function byName($name)
+    {
+        return User::where('name', $name)->first();
+    }
 }

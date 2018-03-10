@@ -70,7 +70,7 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ route('email_confirm') }}">个人中心</a>
+                                        <a href="{{ route('user.home', Auth::user()->name) }}">个人中心</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
