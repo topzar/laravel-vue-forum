@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Repositories\UserRepository;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller

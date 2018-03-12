@@ -16,20 +16,23 @@
                     <div class="media questions-list">
                         <div class="media-left">
                             <a href="#">
-                                <img class="media-object img-rounded" src="{{ asset($question->user->avatar) }}" alt="..." height="60px">
+                                <img class="media-object img-circle questions-user-avatar" src="{{ asset($question->user->avatar) }}" alt="...">
                             </a>
                         </div>
                         <div class="media-body">
                             <h4 class="media-heading">
-                                <a href="{{ route('question.show', $question->id) }}"> {{ $question->title }} </a>
+                                <a href="{{ route('question.show', $question->id) }}" class="media-heading-title"> {{ $question->title }} </a>
                             </h4>
-                            <div class="questions_info">
-                                <span>由 {{$question->user->name}}</span>
+                            <div class="questions-info">
+                                <span>由 <a href="{{ route('user.home', $question->user->name) }}">{{$question->user->name}}</a></span>
                                 <span>发布于 {{$question->updated_at}}</span>
                             </div>
                         </div>
                     </div>
                 @endforeach
+                <div>
+                    {{--{{ $topic->questions->links() }}--}}
+                </div>
             </div>
             <div class="col-md-4">
                 {{--<div class="panel panel-default">--}}

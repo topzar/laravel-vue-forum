@@ -4,8 +4,8 @@
     <div class="container-fluid questions-bar">
         <div class="container">
             <h3>
-                论坛
-                <a href="{{ route('question.create') }}" class="btn btn-success pull-right"> 发布问题</a>
+                <span><i class="fa fa-comments"></i> 问答 - 请文明讨论</span>
+                <a href="{{ route('question.create') }}" class="btn btn-primary pull-right"> 发布问题</a>
             </h3>
         </div>
     </div>

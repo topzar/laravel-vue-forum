@@ -8355,10 +8355,12 @@ button.close {
 }
 
 .questions-bar {
-  margin-top: -20px;
   padding: 40px 0;
   overflow: hidden;
-  margin-bottom: 20px;
+  background: #34495E;
+  color: #1ABC9C;
+  margin-top: -30px;
+  margin-bottom: 30px;
 }
 
 .questions-list {

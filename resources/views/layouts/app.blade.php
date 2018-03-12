@@ -63,9 +63,9 @@
                                 <span href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true"
                                     style="padding: 10px 15px;display: inline-block;"
                                 >
-                                    {{--{{ Auth::user()->name }}--}}
-                                    {{--<span class="caret"></span>--}}
                                     <img src="{{ Auth::user()->avatar }}" alt="" class="img-rounded img-responsive" style="height: 34px;display: inline-block;">
+                                    {{ Auth::user()->name }}
+                                    <span class="caret"></span>
                                 </span>
 
                                 <ul class="dropdown-menu">
