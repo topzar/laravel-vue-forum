@@ -42,17 +42,17 @@ class FollowUserController extends Controller
 
         //关注操作
         $follow = Auth::guard('api')->user()->followThisUser($userToFollow->id);
-
         if (count($follow['detached'])  > 0) {
-
-            //TODO 发送站内通知
-            $userToFollow->notify(new UserFollowNotification());
 
             $userToFollow->decrement('followers_count');
             return response()->json(['followed' => false]);
         }
 
+        //发送站内通知给被关注者用户
+        $userToFollow->notify(new UserFollowNotification());
         $userToFollow->increment('followers_count');
+
+
         return response()->json(['followed' => true]);
     }
 }
