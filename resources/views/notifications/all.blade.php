@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <h3>消息通知</h3><br><br>
             <ul class="nav nav-tabs">
-                <li role="presentation" class="active">
+                <li role="presentation">
                     <a href="{{ route('notifications', Auth::user()->name) }}">
                         未读消息
                         <span class="label label-danger">
@@ -14,13 +14,13 @@
                         </span>
                     </a>
                 </li>
-                <li role="presentation">
+                <li role="presentation"  class="active">
                     <a href="{{ route('notifications.all',Auth::user()->name) }}">全部消息</a>
                 </li>
             </ul>
             <br>
             <div class="notifications-list">
-                @foreach($user->unreadNotifications as $notification)
+                @foreach($user->notifications as $notification)
                     @include('notifications.'.snake_case(class_basename($notification->type)))
                 @endforeach
             </div>
