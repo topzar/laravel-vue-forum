@@ -56,4 +56,9 @@ class Question extends Model
     {
         return $query->where('is_hidden', 0);
     }
+
+    public function comments()
+    {
+        return $this->morphMany('App\Comment', 'commentable');
+    }
 }
