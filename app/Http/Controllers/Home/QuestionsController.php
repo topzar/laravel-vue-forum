@@ -59,6 +59,9 @@ class QuestionsController extends Controller
         //操作问题和话题的关联表 attach()
         $question->topics()->attach($topics);
 
+        //增加用户问题数
+        $question->user()->increment('questions_count');
+
         return redirect()->route('question.show',$question->id);
     }
 
@@ -107,6 +110,9 @@ class QuestionsController extends Controller
         $question = $this->questionRepository->byId($id);
 
         if (Auth::user()->isOwner($question)) {
+            //较少问题数
+            $question->user()->decrement('questions_count');
+            //删除问题
             $question->delete();
             return redirect('/');
         }
