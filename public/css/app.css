@@ -8481,6 +8481,17 @@ button.close {
   display: block;
 }
 
+/*Notifications*/
+
+.notifications-list p {
+  color: #1b6d85;
+}
+
+.notifications-list p.unread a,
+.notifications-list .unread-flag {
+  color: #E74C3C;
+}
+
 body {
   padding-top: 90px;
   /*background: #ECF0F1;*/

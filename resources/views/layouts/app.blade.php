@@ -50,11 +50,11 @@
                             <li><a href="{{ route('register') }}">注册</a></li>
                         @else
                             <li>
-                                <a href="{{ route('notifications') }}" class="user_notification">
+                                <a href="{{ route('notifications', Auth::user()->name) }}" class="user_notification">
                                     <i class="fa fa-bell"></i>&nbsp;
-                                    @if(count(Auth::user()->notifications))
+                                    @if(count(Auth::user()->unreadNotifications))
                                     <span class="notifications_count">
-                                        {{ count(Auth::user()->notifications) }}
+                                        {{ count(Auth::user()->unreadNotifications) }}
                                     </span>
                                     @endif
                                 </a>

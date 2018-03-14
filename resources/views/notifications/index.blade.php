@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">站内通知</div>
 
-                <div class="panel-body">
+                <div class="panel-body notifications-list">
                     @foreach($user->notifications as $notification)
                         @include('notifications.'.snake_case(class_basename($notification->type)))
                     @endforeach

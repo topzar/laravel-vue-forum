@@ -36,7 +36,8 @@ Route::group(['namespace'=> 'Home'], function () {
 
     Route::get('topic/{id}', 'TopicController@show')->name('topic.show');
 
-    Route::get('notifications', 'NotificationController@index')->name('notifications');
+    Route::get('@{username}/notifications', 'NotificationController@index')->name('notifications');
+    Route::get('notifications/{notification}', 'NotificationController@show')->name('notifications.read');
 
     Route::get('@{username}', 'UserController@home')->name('user.home');
 });
