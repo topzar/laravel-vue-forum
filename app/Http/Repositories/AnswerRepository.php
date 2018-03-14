@@ -8,9 +8,9 @@ use App\Answer;
 
 class AnswerRepository
 {
-    public function create(array $attribtes)
+    public function create(array $attributes)
     {
-        return Answer::create($attribtes);
+        return Answer::create($attributes);
     }
 
     public function byId($id)
