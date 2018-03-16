@@ -36,6 +36,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         {!! $question->body !!}
+                        <comment type="question" id="{{ $question->id }}" count="{{ $question->comments()->count() }}"></comment>
                     </div>
                 </div>
 
@@ -56,6 +57,7 @@
                                         </a>
                                     </h4>
                                     {!! $answer->body !!}
+                                    <comment type="answer" id="{{ $answer->id }}" count="{{ $answer->comments()->count() }}"></comment>
                                 </div>
                             </div>
                         @endforeach

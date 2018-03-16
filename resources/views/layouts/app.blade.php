@@ -14,6 +14,14 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        @if(Auth::check())
+            window.LEARNFANS = {
+            name:"{{Auth::user()->name}}",
+            avatar:"{{Auth::user()->avatar}}"
+        }
+        @endif
+    </script>
 </head>
 <body>
     <div id="app">
