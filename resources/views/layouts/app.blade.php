@@ -18,7 +18,8 @@
         @if(Auth::check())
             window.LEARNFANS = {
             name:"{{Auth::user()->name}}",
-            avatar:"{{Auth::user()->avatar}}"
+            avatar:"{{Auth::user()->avatar}}",
+            token:"{{ csrf_token() }}"
         }
         @endif
     </script>

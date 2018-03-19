@@ -41,4 +41,6 @@ Route::group(['namespace'=> 'Home'], function () {
     Route::get('notifications/{notification}', 'NotificationController@show')->name('notifications.read');
 
     Route::get('@{username}', 'UserController@home')->name('user.home');
+    Route::get('@{username}/avatar', 'UserController@avatar')->name('user.avatar');
+    Route::post('/avatar', 'UserController@setAvatar')->name('user.setAvatar');
 });

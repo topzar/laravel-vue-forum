@@ -73,7 +73,7 @@
                 })
             },
             openCommentForm: function () {
-                //获取评论
+                 //获取评论
                 this.getComments()
                 $(this.dialogId).modal('show');
             },
