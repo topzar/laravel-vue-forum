@@ -43,4 +43,7 @@ Route::group(['namespace'=> 'Home'], function () {
     Route::get('@{username}', 'UserController@home')->name('user.home');
     Route::get('@{username}/avatar', 'UserController@avatar')->name('user.avatar');
     Route::post('/avatar', 'UserController@qiniu')->name('user.setAvatar');
+
+    Route::get('@{username}/password', 'UserController@password')->name('user.password');
+    Route::post('@{username}/password', 'UserController@changePassword')->name('user.changePassword');
 });

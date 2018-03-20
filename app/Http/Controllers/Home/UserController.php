@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Repositories\UserRepository;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PasswordRequest;
 use Illuminate\Http\Request;
 use Auth;
+use Hash;
 use Storage;
 
 class UserController extends Controller
@@ -62,5 +64,27 @@ class UserController extends Controller
         Auth::user()->save();
 
         return response()->json(['url' => Auth::user()->avatar]);
+    }
+
+    public function password()
+    {
+        return view('user.password');
+    }
+
+    public function changePassword(PasswordRequest $request)
+    {
+        $user = Auth::user();
+        if (Hash::check($request->get('old_password'), $user->password)) {
+            $user->password = bcrypt($request->get('password'));
+            $user->save();
+
+            //让用户重新登录
+            Auth::logout();
+            return redirect('login');
+
+        }else{
+            return back();
+        }
+
     }
 }
