@@ -15,6 +15,7 @@
 //    return view('welcome');
 //});
 Route::get('/', 'Home\QuestionsController@index');
+Route::get('/test', 'HomeController@test');
 Route::get('@{username}', 'HomeController@userHome')->name('user.home');
 
 Route::get('email/confirm', 'EmailController@confirm')->name('email_confirm');
