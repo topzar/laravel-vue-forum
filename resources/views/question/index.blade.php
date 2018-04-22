@@ -25,7 +25,7 @@
                             </h4>
                             <div class="questions-info">
                                 <span>由 <a href="{{ route('user.home', $question->user->name) }}">{{$question->user->name}}</a></span>
-                                <span>发布于 {{$question->updated_at}}</span>
+                                <span>发布于 {{ getDiffTimeFromNow($question->updated_at) }}</span>
                             </div>
                         </div>
                     </div>
