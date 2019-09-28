@@ -43,14 +43,19 @@ DB_PASSWORD=secret
 composer install
 ```
 
+生成应用秘钥
+```
+php artisan key:generate
+```
+
+数据迁移
+```
+php artisan migrate
+```
+
 安装前端依赖
 ```
 npm install || yarn
-```
-
-数据填充
-```
-migrate
 ```
 
 Nginx配置
