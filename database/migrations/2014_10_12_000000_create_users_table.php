@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->integer('followings_count')->default(0)->comment('关注总数');
             $table->smallInteger('is_active')->default(0)->comment('是否激活');
             $table->integer('experience')->comment('积分');
+            $table->string('api_token', 80)->nullable();
             $table->enum('sex', ['male', 'female']);
             $table->rememberToken();
             $table->timestamps();
